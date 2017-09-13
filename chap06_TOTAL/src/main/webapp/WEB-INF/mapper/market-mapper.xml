@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="market">
+	<insert id="addArticle">
+		insert into auction values(market_seq.nextval, #{name}, #{stprice}, #{drprice, jdbcType=NUMERIC}, #{closedate, jdbcType=DATE})
+	</insert>
+	
+	<select id="allArticle" resultType="java.util.HashMap">
+		select * from auction order by nm desc
+	</select>
+	
+	<select id="readArticle"  resultType="java.util.HashMap">
+		select * from auction where nm=#{nm}
+	</select>
+	
+	<select id="searchStprice" resultType="java.util.HashMap">
+		select * from auction where stprice &lt; #{stprice}
+		<if test="mode != null">
+			 and drprice is not null
+		</if>
+	</select>
+	
+	<!-- <select id="searchBySprice1" resultType="java.util.HashMap">
+		select * from auction where stprice &lt; #{stprice}
+	</select>
+	
+	<select id="searchBySprice2" resultType="java.util.HashMap">
+		<![CDATA[
+			select * from auction where stprice < #{stprice} and drprice is not null
+		]]>
+	</select> -->
+</mapper>
