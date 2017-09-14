@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="t_base" template="/WEB-INF/views/template.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/delnav.jsp" />
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
+	</definition>
+	<definition name="market_add" extends="t_base">
+		<put-attribute name="title" value="상품등록" />
+		<put-attribute name="section" value="/WEB-INF/views/market/add.jsp"/>
+	</definition>
+	<definition name="market_add_rst" extends="t_base">
+		<put-attribute name="title" value="상품등록 결과" />
+		<put-attribute name="section" value="/WEB-INF/views/market/add_rst.jsp"/>
+	</definition>
+	<definition name="market_list" extends="t_base">
+		<put-attribute name="title" value="경매장" />
+		<put-attribute name="section" value="/WEB-INF/views/market/list.jsp"/>
+	</definition>
+	<definition name="market_view" extends="t_base">
+		<put-attribute name="title" value="경매상품보기" />
+		<put-attribute name="section" value="/WEB-INF/views/market/view.jsp"/>
+	</definition>
+	
+	<definition name="t_expr" extends="t_base">
+		<put-attribute name="title" expression="${title}"/>
+		<put-attribute name="section" expression="/WEB-INF/views/${section}.jsp"/>
+	</definition>
+	
+	<definition name="t_m_expr" extends="t_base">
+		<put-attribute name="title" value="경매-HUB"/>
+		<put-attribute name="section">
+			<definition template="/WEB-INF/view/template_sub.jsp">
+				<put-attribute name="m_nav" expression="/WEB-INF/views/market/nav.jsp"/>
+				<put-attribute name="m_section" expression="/WEB-INF/views/market/${section}.jsp"/>
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	
+</tiles-definitions>

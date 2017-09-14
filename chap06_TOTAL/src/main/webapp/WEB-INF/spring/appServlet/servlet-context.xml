@@ -24,7 +24,8 @@
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<property name="definitions">
 			<list>
-				<value>/WEB-INF/mapper/member-mapper.xml</value>
+				<value>/WEB-INF/tiles/tiles-config.xml</value>
+				<value>/WEB-INF/tiles/tiles-config_advance.xml</value>
 			</list>
 		</property>
 	</bean>

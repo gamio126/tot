@@ -21,7 +21,7 @@ public class JoinController {
 
 	@GetMapping(path = "/join")
 	public String joinGetHandle() {
-		return "join";
+		return "t_join";
 	}
 
 	@PostMapping("/join")
@@ -32,7 +32,7 @@ public class JoinController {
 			return "redirect:/";
 		} catch (Exception e) {
 			model.addAttribute("temp", map);
-			return "join";
+			return "t_join";
 		}
 	}
 

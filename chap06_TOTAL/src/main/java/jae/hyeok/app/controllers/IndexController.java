@@ -22,12 +22,12 @@ public class IndexController {
 
 	@RequestMapping({ "/", "/index" })
 	public String rootHandle() {
-		return "index";
+		return "t_index";
 	}
 
 	@RequestMapping("/login")
 	public String loginHandle() {
-		return "login";
+		return "t_login";
 	}
 
 	@RequestMapping("/session")
@@ -38,7 +38,7 @@ public class IndexController {
 			return "redirect:/";
 		} else {
 			model.addAttribute("temp", param);
-			return "login";
+			return "t_login";
 		}
 	}
 }
