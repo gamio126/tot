@@ -13,7 +13,7 @@
 		</c:when>
 		<c:otherwise>
 			${id }님 환영합니다.<br/>
-			<a href="board/list">BOARD</a> | <a href="market/list">MARKET</a>
+			<a href="board/list">BOARD</a> | <a href="market/list">MARKET</a> | <a href="my/info">INFORMATION</a>
 			<hr/>
 		</c:otherwise>
 	</c:choose>

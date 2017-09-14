@@ -14,8 +14,8 @@
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
-		<property name="suffix" value=".jsp" />
+		<property name="prefix" value="/WEB-INF/views/" /> 
+	<property name="suffix" value=".jsp" />
 		<property name="order" value="9" />
 	</bean>
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
@@ -43,6 +43,7 @@
 		<property name="mapperLocations">
 			<list>
 				<value>/WEB-INF/mapper/member-mapper.xml</value>
+				<value>/WEB-INF/mapper/info-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

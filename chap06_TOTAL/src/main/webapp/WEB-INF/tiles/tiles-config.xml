@@ -4,7 +4,7 @@
 <tiles-definitions>
 	<!-- tiles register-->
 	<definition name="t_join" template="/WEB-INF/views/template.jsp">
-		<put-attribute name="title" value="회원가입"/>
+		<put-attribute name="title" value="회원 가입"/>
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
 		<put-attribute name="nav" value="/WEB-INF/views/delnav.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
@@ -46,4 +46,11 @@
 		<put-attribute name="section" value="/WEB-INF/views/board/add_rst.jsp"/>
 	</definition>
 	
+	<definition name="t_my_info" template="/WEB-INF/views/template.jsp">
+		<put-attribute name="title" value="내 정보창" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/delnav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+		<put-attribute name="section" value="/WEB-INF/views/my/info.jsp"/>
+	</definition>
 </tiles-definitions>

@@ -15,11 +15,11 @@
 	</properties>
 	<dependencies>
 		<!-- tiles template -->
-		<dependency>
-			<groupId>org.apache.tiles</groupId>
+		<dependency> 
+			<groupId>org.apache.tiles</groupId> 
 			<artifactId>tiles-extras</artifactId>
-			<version>3.0.7</version>
-		</dependency>
+			<version>3.0.7</version> 
+		</dependency>   
 		<!-- mybatis -->
 		<dependency>
 			<groupId>org.mybatis</groupId>
