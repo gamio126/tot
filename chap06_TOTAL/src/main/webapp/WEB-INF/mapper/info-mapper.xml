@@ -11,4 +11,16 @@
 			where id=#{id} 
 	</update>
 	
+	<insert id="addPic">
+		insert into picture values(pic_seq.nextval, #{id}, #{url}, #{regdate})
+	</insert>
+	
+	<select id="picHistory">
+		select * from picture where id=#{id} order by regdate desc
+	</select>
+	<select id="representPic">
+		select * from (select * from picture where id=#{id} order by regdate desc) where rownum=1;   
+	</select>
+
+	
 </mapper>

@@ -1,31 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<style>
+.bt {
+	padding: 3pt;
+	width: 50px;
+}
+</style>
 <div align="center">
-	<h3>세부정보</h3>
-		<form action="/my/info_rst.jsp" method="get">
-			<p>
-				<b>NAME</b><br />
-				<input type="text" value="" name="name" required />
-			</p>
-			<p>
-				<b>GENDER</b><br />
-				<input type="radio" name="gender" value="남"  ? "checked":"" %> 
-					required />남 
-				<input type="radio" name="gender" value="여"  ? "checked":"" %>
-					required />여
-			</p>
-			<p>
-				<b>BIRTH</b><br />
-				<select name="birth"  >
-				
-				</select>
-			</p>
-			<p>
-				<b>ADDRESS</b><br />
-				<input type="text" name="address" size="50" value="" required />
-			</p>
-			<button type="submit">정보변경</button>
-			<a href="/my/drop.jsp"><button type="button">회원탈퇴</button></a>
+	<h3>프로필관리</h3>
+		<div>
+			<div style="height: 200px; width: 200px;">
+				<c:choose>
+					<c:when test="${empty data.URI }">
+						<img id="pre" src="/temp/default.png" alt="기본이미지"
+							style="width: 100%; height: 100%; border-radius: 10%;" />
+					</c:when>
+					<c:otherwise>
+						<img id="pre" src="${data.URI }" alt="사용자프로필"
+							style="width: 100%; height: 100%" />
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+		<div style="margin-top: 20px;">
+		<form action="/my/info" method="post" enctype="multipart/form-data" id="pform">
+			<input id="profile" type="file" name="profile" style="display: none"/>
+			<input type="text" name="nick"/>
+			<button type="submit" class="ok" id="ok">적용</button>
+			<button type="button" class="cc" onclick="javascript:location.reload()">취소</button>
 		</form>
+	</div>
+<script>
+ /* document.getElementById("ok").onclick = function(){
+	if(window.confirm("프로필 변경을 저장하시겠습니까?")){
+		document.getElementById("pform").submit
+	}
+}  */
 
+</script>
+	<div>
+		<table>
+			<tr>
+				<td>NAME : ${auth.NAME }</td>
+			</tr>
+			<tr>
+				<td>GENDER : ${auth.GENDER }</td>
+			</tr>
+			<tr>
+				<td>BIRTH : ${auth.BIRTH }</td>
+			</tr>
+			<tr>
+				<td>ADDRESS : ${auth.ADDRESS }</td>
+			</tr>
+		</table>
+	</div>
 </div>
+<script>
+	document.getElementById("pre").onclick=function() {
+		document.getElementById("profile").click();
+	}
+	document.getElementById("profile").onchange=function() {
+		//console.log(this.files[0]);
+		//console.log("변경 발생")
+		var reader = new FileReader();
+		reader.onload = function(e){
+			//console.log(e.target.result)
+			document.getElementById("pre").src = e.target.result;
+		}
+		reader.readAsDataURL(this.files[0]);
+	}
+</script>
+
+
+
+
+
+

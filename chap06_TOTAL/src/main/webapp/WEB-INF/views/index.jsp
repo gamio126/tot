@@ -8,7 +8,7 @@
 		<h3>안녕하세요.</h3>
 	</c:when>
 	<c:otherwise>
-		<h3>${auth }님 반갑습니다.</h3>
+		<h3>${auth.ID }님 반갑습니다.</h3>
 	</c:otherwise>
 </c:choose>
 </div>

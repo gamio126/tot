@@ -18,4 +18,10 @@
 		select * from member where (id=#{idmail} or email=#{idmail})
 			 and pass=#{pass, jdbcType=VARCHAR }
 	</select>
+	
+	<select id="readOneByIdOrEmail" resultType="java.util.HashMap">
+		select m.*, d.* from member m join detail d on m.id = d.id
+			where (m.id=#{idmail} or m.email=#{idmail})
+	</select>
+	
 </mapper>

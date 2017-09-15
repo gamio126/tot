@@ -1,6 +1,8 @@
 package jae.hyeok.app.models;
 
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -19,5 +21,13 @@ public class InfoDaoMybatis {
 	
 	public int myInfoChange(Map map) {
 		return template.update("my.updateOneDetail", map);
+	}
+	
+	public List picHistory(String abc) {
+		return template.selectList("my.picHistory",abc);
+	}
+
+	public Map representPic(String abc) {
+		return template.selectOne("my.representPic",abc);
 	}
 }

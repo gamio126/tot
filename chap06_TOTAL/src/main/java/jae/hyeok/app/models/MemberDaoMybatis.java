@@ -1,6 +1,7 @@
 package jae.hyeok.app.models;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -22,4 +23,9 @@ public class MemberDaoMybatis {
 	public int existOne(Map map) {
 		return template.selectOne("join.existOne",map);
 	}
+	
+	public HashMap readOneByIdOrEmail(String idmail) {
+		return template.selectOne("join.readOneByIdOrEmail", idmail);
+	}
+	
 }

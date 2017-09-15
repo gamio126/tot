@@ -1,6 +1,7 @@
 package jae.hyeok.app.controllers;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import jae.hyeok.app.models.MemberDaoMybatis;
 
@@ -30,15 +32,19 @@ public class IndexController {
 		return "t_login";
 	}
 
-	@RequestMapping("/session")
-	public String sessionHandle(@RequestParam Map param, Model model, HttpSession session) throws SQLException {
+	@PostMapping("/login")
+	public ModelAndView sessionHandle(@RequestParam Map param, HttpSession session) throws SQLException {
+		ModelAndView mav = new ModelAndView();
 		int t = memberDao.existOne(param);
 		if (t == 1) {
-			session.setAttribute("auth", param.get("idmail"));
-			return "redirect:/";
+			HashMap u = memberDao.readOneByIdOrEmail((String)param.get("idmail"));
+			System.out.println(t);
+			session.setAttribute("auth", u);
+			mav.setViewName("redirect:/");
 		} else {
-			model.addAttribute("temp", param);
-			return "t_login";
+			mav.setViewName("t_login");
+			mav.addObject("temp", "temp");
 		}
+		return mav;
 	}
 }

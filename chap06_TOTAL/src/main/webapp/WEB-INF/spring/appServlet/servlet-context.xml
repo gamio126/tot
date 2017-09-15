@@ -11,6 +11,12 @@
 	<mvc:default-servlet-handler />
 	<context:component-scan base-package="jae.hyeok.app.controllers" />
 	<context:component-scan base-package="jae.hyeok.app.models" />
+	
+	<!-- multipartResolver 등록(이름으로 뽑아서 처리)-->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="uploadTempDir" value="/temp"/>
+		<property name="defaultEncoding" value="utf-8"/>
+	</bean>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -58,6 +64,8 @@
 	
 	<!-- about converter -->
 	<bean class="com.fasterxml.jackson.databind.ObjectMapper" />
+	<bean class="java.text.SimpleDateFormat">
+		<constructor-arg name="pattern" value="yyyyMMddHHmmss"/>
+	</bean>
 	
-
 </beans>
