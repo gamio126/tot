@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <style>
 .bt {
 	padding: 3pt;
@@ -8,72 +8,54 @@
 }
 </style>
 <div align="center">
-	<h3>프로필관리</h3>
-		<div>
-			<div style="height: 200px; width: 200px;">
-				<c:choose>
-					<c:when test="${empty data.URI }">
-						<img id="pre" src="/temp/default.png" alt="기본이미지"
-							style="width: 100%; height: 100%; border-radius: 10%;" />
-					</c:when>
-					<c:otherwise>
-						<img id="pre" src="${data.URI }" alt="사용자프로필"
-							style="width: 100%; height: 100%" />
-					</c:otherwise>
-				</c:choose>
-			</div>
+	<form action="/my/history" method="post">
+		<h3>프로필관리
+		<button type="submit" class="his" id="his" >★</button></h3>
+	</form>
+	<div>
+		<div style="height: 200px; width: 200px;">
+			<c:choose>
+				<c:when test="${empty prof }">
+					<img id="pre" src="/temp/default.png" alt="기본이미지"
+						style="width: 100%; height: 100%; border-radius: 10%;" />
+				</c:when>
+				<c:otherwise>
+					<img id="pre" src="${prof.URL }" alt="사용자프로필"
+						style="width: 100%; height: 100%; border-radius: 10%;" />
+				</c:otherwise>
+			</c:choose>
 		</div>
 		<div style="margin-top: 20px;">
-		<form action="/my/info" method="post" enctype="multipart/form-data" id="pform">
-			<input id="profile" type="file" name="profile" style="display: none"/>
-			<input type="text" name="nick"/>
-			<button type="submit" class="ok" id="ok">적용</button>
-			<button type="button" class="cc" onclick="javascript:location.reload()">취소</button>
-		</form>
-	</div>
-<script>
- /* document.getElementById("ok").onclick = function(){
-	if(window.confirm("프로필 변경을 저장하시겠습니까?")){
-		document.getElementById("pform").submit
-	}
-}  */
-
-</script>
-	<div>
-		<table>
-			<tr>
-				<td>NAME : ${auth.NAME }</td>
-			</tr>
-			<tr>
-				<td>GENDER : ${auth.GENDER }</td>
-			</tr>
-			<tr>
-				<td>BIRTH : ${auth.BIRTH }</td>
-			</tr>
-			<tr>
-				<td>ADDRESS : ${auth.ADDRESS }</td>
-			</tr>
-		</table>
+			<form action="/my/info" method="post" id="pform"
+				enctype="multipart/form-data" style="display: block;">
+				<input id="profile" type="file" name="profile" style="display: none" />
+				<small >사진을 눌러 새로운 사진을 올려주세요.</small><br/>
+				<button type="submit" class="bt" id="sbt" style="margin-top: 10px">적용</button>
+				<button type="button" class="bt"
+					onclick="javascript:location.reload()">취소</button>
+			</form>
+		</div>
 	</div>
 </div>
 <script>
-	document.getElementById("pre").onclick=function() {
+	document.getElementById("sbt").onclick = function(){
+		window.alert("수정 완료");
+		
+	}
+	document.getElementById("pre").onclick = function() {
 		document.getElementById("profile").click();
 	}
-	document.getElementById("profile").onchange=function() {
-		//console.log(this.files[0]);
-		//console.log("변경 발생")
+	
+	document.getElementById("profile").onchange = function() {
+		// console.log(this.files[0]);
+		// console.log("변경발생");
 		var reader = new FileReader();
-		reader.onload = function(e){
-			//console.log(e.target.result)
+		reader.onload = function(e) {
+			// console.log(e.target.result);
 			document.getElementById("pre").src = e.target.result;
 		}
 		reader.readAsDataURL(this.files[0]);
 	}
 </script>
-
-
-
-
 
 

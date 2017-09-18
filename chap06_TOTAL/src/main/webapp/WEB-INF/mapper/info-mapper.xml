@@ -11,16 +11,35 @@
 			where id=#{id} 
 	</update>
 	
-	<insert id="addPic">
-		insert into picture values(pic_seq.nextval, #{id}, #{url}, #{regdate})
+	<insert id="addPic" >
+		insert into picture values(picture_seq.nextval, #{id}, #{url}, sysdate)
 	</insert>
 	
-	<select id="picHistory">
+	<select id="picHistory" resultType="java.util.HashMap">
 		select * from picture where id=#{id} order by regdate desc
 	</select>
-	<select id="representPic">
-		select * from (select * from picture where id=#{id} order by regdate desc) where rownum=1;   
+	<select id="representPic" resultType="java.util.HashMap">
+		select * from (select * from picture where id=#{id} order by regdate desc) where rownum=1  
 	</select>
 
+	<select id="allMember" resultType="java.util.HashMap">
+		select m.*, p.* from member m left join
+	    (select id, max(URL) as URL from picture group by id) p on m.id = p.id
+		order by m.id asc
+	</select>
+	
+	<select id="allMember2" resultType="java.util.HashMap">
+		select * from (select rownum as r, t.* from(
+		select m.*, p.URL from member m left join
+   		(select id, max(URL) as URL from picture group by id) p on m.id = p.id
+		order by m.id asc) t) where r between #{start} and #{end }
+	</select>
+	
+	<select id="countMember" resultType="java.lang.Integer">
+		select count(*) as cnt from member m left join
+   		(select id, max(URL) as URL from picture group by id) p on m.id = p.id
+		order by m.id asc
+	</select>
+	
 	
 </mapper>

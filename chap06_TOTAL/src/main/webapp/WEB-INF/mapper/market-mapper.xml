@@ -31,4 +31,16 @@
 			select * from auction where stprice < #{stprice} and drprice is not null
 		]]>
 	</select> -->
+	
+	
+	
+	<!-- dd -->
+	<select id="ListAll" resultType="java.util.HashMap">
+		 select * from (select ROWNUM as r, t.* from 
+		 (select * from auction order by nm asc)t )where r between #{start} and #{end }
+	</select>
+	
+	<select id="ListCount" resultType="java.lang.Integer">
+		select count(*) as cnt from auction order by nm asc
+	</select>
 </mapper>

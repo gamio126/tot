@@ -50,6 +50,9 @@
 			<list>
 				<value>/WEB-INF/mapper/member-mapper.xml</value>
 				<value>/WEB-INF/mapper/info-mapper.xml</value>
+				<value>/WEB-INF/mapper/board-mapper.xml</value>
+				<value>/WEB-INF/mapper/market-mapper.xml</value>
+				<value>/WEB-INF/mapper/reply-mapper.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -69,3 +72,4 @@
 	</bean>
 	
 </beans>
+

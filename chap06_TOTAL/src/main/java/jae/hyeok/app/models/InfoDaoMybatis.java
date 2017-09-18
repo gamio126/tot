@@ -23,11 +23,27 @@ public class InfoDaoMybatis {
 		return template.update("my.updateOneDetail", map);
 	}
 	
-	public List picHistory(String abc) {
+	public List<Map> picHistory(String abc) {
 		return template.selectList("my.picHistory",abc);
 	}
 
 	public Map representPic(String abc) {
 		return template.selectOne("my.representPic",abc);
+	}
+	
+	public int addPic(Map map) {
+		return template.insert("my.addPic", map);
+	}
+	
+	public List<Map> allMember(){
+		return template.selectList("my.allMember");
+	}
+	
+	public List<Map> allMember2(Map map){
+		return template.selectList("my.allMember2", map);
+	}
+	
+	public int countMember() {
+		return template.selectOne("my.countMember");
 	}
 }

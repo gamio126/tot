@@ -17,4 +17,20 @@
 	<update id="countOne">
 		update board set count = count+1 where num =#{num}
 	</update>
+	<!-- dd -->
+	<select id="ListAll" resultType="java.util.HashMap">
+		 select * from (select ROWNUM as r, t.* from 
+		 (select * from board order by num desc)t )where r between #{start} and #{end }
+	</select>
+	
+	<select id="ListCount" resultType="java.lang.Integer">
+		select count(*) as cnt from board order by num asc
+	</select>
+	
+	
+	
+	
+	
+	
+	
 </mapper>
