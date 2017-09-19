@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jae.hyeok.app.controllers.ws.AlertWSHandler;
 import jae.hyeok.app.models.MemberDaoMybatis;
 
 @Controller
@@ -19,6 +20,9 @@ public class JoinController {
 	@Autowired
 	MemberDaoMybatis memberDao;
 
+	@Autowired
+	AlertWSHandler aws;	// 웹소켓 핸들러를 Autowired 걸어서 연결
+	
 	@GetMapping(path = "/join")
 	public String joinGetHandle() {
 		return "t_join";
@@ -28,7 +32,7 @@ public class JoinController {
 	public String joinPostHandle(@RequestParam Map map, HttpSession session, Model model) {
 		try {
 			boolean b = memberDao.addOne(map);
-			/*session.setAttribute("auth", "on");*/
+				aws.sendMessage("새로운 사용자가 가입했습니다.");
 			return "redirect:/";
 		} catch (Exception e) {
 			model.addAttribute("temp", map);

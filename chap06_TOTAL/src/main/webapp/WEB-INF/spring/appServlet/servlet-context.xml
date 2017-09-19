@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns="http://www.springframework.org/schema/beans"
-	xmlns:mvc="http://www.springframework.org/schema/mvc" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
@@ -11,6 +13,15 @@
 	<mvc:default-servlet-handler />
 	<context:component-scan base-package="jae.hyeok.app.controllers" />
 	<context:component-scan base-package="jae.hyeok.app.models" />
+	<!-- WebSocket Handler -->
+	<bean class="jae.hyeok.app.controllers.ws.BasicWSHandler" id="bws"/>
+	
+	<websocket:handlers >
+		<websocket:mapping handler="bws" path="/ws/basic"/>
+		<websocket:mapping handler="cws" path="/ws/chat"/>
+		<websocket:mapping handler="aws" path="/ws/alert"/>
+		
+	</websocket:handlers>	
 	
 	<!-- multipartResolver 등록(이름으로 뽑아서 처리)-->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
@@ -72,4 +83,5 @@
 	</bean>
 	
 </beans>
+
 
