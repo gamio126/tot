@@ -44,9 +44,10 @@ public class IndexController {
 			HashMap u = memberDao.readOneByIdOrEmail((String)param.get("idmail"));
 			System.out.println(t);
 			session.setAttribute("auth", u);
+			session.setAttribute("auth_id", u.get("ID"));
 			Map prof = dao.representPic((String)u.get("ID"));
 			session.setAttribute("prof", prof);
-			mav.setViewName("t_index");
+			mav.setViewName("redirect:/index");
 		} else {
 			mav.setViewName("t_login");
 			mav.addObject("temp", "temp");

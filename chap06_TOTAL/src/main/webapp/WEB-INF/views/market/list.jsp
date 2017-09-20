@@ -16,7 +16,7 @@ th, td {
 <div align="center" style="line-height: 35px">
 	<h2>경매장</h2>
 	<p align="right" style="margin-right: 30px;">
-		${id }님 반갑습니다.<br /> 총 <b>${cnt }</b> 개의 상품이 등록되어있습니다.
+		총 <b>${cnt }</b> 개의 상품이 등록되어있습니다.
 	</p>
 	<p align="right" style="margin-right: 30px;">
 		<a href="/market/add"><button type="button" style="padding: 5px;">상품

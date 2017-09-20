@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memo">
+	<select id="MyReceiveMemo" resultType="java.util.HashMap">
+		select * from memo where receiver=#{id}
+	</select>
+	
+	<insert id="addNew">
+		insert into memo values(memo_seq.nextval, #{sender}, #{receiver}, #{content}) 
+	</insert>
+	
+	
+	<!-- dd -->
+	<select id="ListAll" resultType="java.util.HashMap">
+		  select * from (select ROWNUM as r, t.* from 
+		  (select * from memo where RECEIVER=#{receiver} order by no desc)t )where r between #{start} and #{end }
+	</select>
+	<select id="ListCount" resultType="java.lang.Integer">
+		select count(*) as cnt from memo where RECEIVER=#{receiver} order by no asc
+	</select>
+</mapper>

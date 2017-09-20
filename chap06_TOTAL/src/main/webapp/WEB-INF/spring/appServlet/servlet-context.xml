@@ -20,6 +20,10 @@
 		<websocket:mapping handler="bws" path="/ws/basic"/>
 		<websocket:mapping handler="cws" path="/ws/chat"/>
 		<websocket:mapping handler="aws" path="/ws/alert"/>
+		<websocket:mapping handler="luws" path="/ws/loginUsers"/>
+		<websocket:handshake-interceptors>
+			<bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
+		</websocket:handshake-interceptors>
 		
 	</websocket:handlers>	
 	
@@ -64,6 +68,7 @@
 				<value>/WEB-INF/mapper/board-mapper.xml</value>
 				<value>/WEB-INF/mapper/market-mapper.xml</value>
 				<value>/WEB-INF/mapper/reply-mapper.xml</value>
+				<value>/WEB-INF/mapper/memo-mapper.xml</value>
 			</list>
 		</property>
 	</bean>

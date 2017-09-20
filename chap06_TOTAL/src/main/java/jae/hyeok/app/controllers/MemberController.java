@@ -66,13 +66,14 @@ public class MemberController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		Map data = new HashMap<>();
 		if (rst) {
-			Map data = new HashMap<>();
 			data.put("id", id);
 			data.put("url", "/temp/" + picName);
 			dao.addPic(data);
 		}
 		mav.addObject("rst", rst);
+		session.setAttribute("prof", data);
 		return mav;
 	}
 

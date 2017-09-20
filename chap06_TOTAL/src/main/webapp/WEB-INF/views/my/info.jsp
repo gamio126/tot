@@ -10,7 +10,7 @@
 <div align="center">
 	<form action="/my/history" method="post">
 		<h3>프로필관리
-		<button type="submit" class="his" id="his" >★</button></h3>
+		<!--  <button type="submit" class="his" id="his" >★</button>--></h3>
 	</form>
 	<div>
 		<div style="height: 200px; width: 200px;">

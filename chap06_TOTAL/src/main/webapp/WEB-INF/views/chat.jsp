@@ -5,7 +5,7 @@
 	<h3>RANDOM CHATTING</h3>
 	<div style="padding:4px; width: 65%; height:5%; background-color: #FFCCFF; font-size: 10pt;" align="left" id="log">
 	</div>
-	<div style="padding:4px; width: 65%; height:5%; background-color: #FFCCFF; font-size: 10pt;" align="left" id="log1">
+	<div style="padding:4px; width: 65%; height:4%; background-color: #FFCCFF; font-size: 10pt;" align="left" id="log1">
 	</div>
 	<div style="padding:4px; width: 65%; height:50%; background-color: #FFCCFF; overflow-y : scroll; word-break: break-all; 
 	font-size: 10pt;" align="left" id="log2">
