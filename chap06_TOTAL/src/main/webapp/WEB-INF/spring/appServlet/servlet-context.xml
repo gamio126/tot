@@ -13,7 +13,29 @@
 	<mvc:default-servlet-handler />
 	<context:component-scan base-package="jae.hyeok.app.controllers" />
 	<context:component-scan base-package="jae.hyeok.app.models" />
-	<!-- WebSocket Handler -->
+	<!-- mailSender -->
+	<bean class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.gmail.com"/>
+		<property name="port" value="587"/>
+		<property name="username" value="domke126"/>
+		<property name="password" value="wogur@22"/>
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+			</props>
+		</property>
+	</bean>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- WebSocket Handler -->	
 	<bean class="jae.hyeok.app.controllers.ws.BasicWSHandler" id="bws"/>
 	
 	<websocket:handlers >
