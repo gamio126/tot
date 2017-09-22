@@ -3,7 +3,7 @@
 <tiles-definitions>
 	<definition name="t_base" template="/WEB-INF/views/template.jsp">
 		<put-attribute name="header" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="nav" value="/WEB-INF/views/delnav.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp" />
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp" />
 	</definition>
 	<definition name="market_add" extends="t_base">

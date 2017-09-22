@@ -45,24 +45,25 @@ b {
 </div>
 <script>
 	document.getElementById("cm").onchange=function(){
-		var xhr = new XMLHttpRequest();
 		var cm = document.getElementById("cm").value;
 		var param = "cm="+cm;
-		xhr.open("get", "/check_con?"+param, true);
-		xhr.send(email);
+		var xhr = new XMLHttpRequest();
+		xhr.open("post", "/check_con?"+param, true);
+		xhr.send();
 		xhr.onreadystatechange = function() {
-				if (this.readyState == 4) {
-					var xml = this.responseXML; 
-					var con = xml.getElementsByTagName("ss");
-					
-					if(!con){
-						document.getElementById("sufa").innerHTML = "인증번호가 틀립니다."
-						document.getElementById("sufa").style.color="red"
-					}else{
-						document.getElementById("sufa").innerHTML = "인증번호가 일치합니다."
-						document.getElementById("sufa").style.color="green"
-					}
+			if (this.readyState == 4) {
+				if(this.responseText == "YYYYY"){
+					document.getElementById("sufa").innerHTML = "인증번호가 일치합니다."
+					document.getElementById("sufa").style.color="green"
+					clearInterval(time);
+					document.getElementById("email").readOnly = true;
+					document.getElementById("sbt").disabled = false;
+				}else{
+					document.getElementById("sufa").innerHTML = "인증번호가 틀립니다."
+					document.getElementById("sufa").style.color="red"
+					document.getElementById("sbt").disabled = true;
 				}
+			}
 		}
 	}
 </script>
@@ -75,12 +76,11 @@ b {
 			var email = document.getElementById("email").value;
 			var param = "email="+email;
 			var xhr = new XMLHttpRequest();
-			xhr.open("get", "/confirm?"+param, true);
+			xhr.open("post", "/confirm", true);
 			xhr.send(email);
 			xhr.onreadystatechange = function() {
 				if (this.readyState == 4) {
 					window.alert(email + " 로 인증키가 발송되었습니다.");
-					console.log(this.responseText)
 					document.getElementById("cf").style.display = "none";
 					document.getElementById("cf_view").style.display = "";
 					tot = 180;

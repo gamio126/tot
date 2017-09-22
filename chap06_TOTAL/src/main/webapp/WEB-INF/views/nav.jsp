@@ -27,7 +27,8 @@
 			<a href="/my/info">INFORMATION</a> |
 			<a href="/my/allMember2">MEMBER</a><br/>
 			<a href="/memo/home">MESSAGE</a> |
-			<a href="http://dic.naver.com/">DICTIONARY</a>
+			<a href="/apic/park">PARKING</a> |
+			<a href="http://dic.naver.com/">DICTIONARY</a> |
 			<hr/>
 		</c:otherwise>
 	</c:choose>

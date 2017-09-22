@@ -90,4 +90,12 @@
 		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
 		<put-attribute name="section" value="/WEB-INF/views/memo/send.jsp"/>
 	</definition>
+	
+	<definition name="t_api_park" template="/WEB-INF/views/template.jsp">
+		<put-attribute name="title" value="주차장 정보" />
+		<put-attribute name="header" value="/WEB-INF/views/header.jsp"/>
+		<put-attribute name="nav" value="/WEB-INF/views/nav.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/views/footer.jsp"/>
+		<put-attribute name="section" value="/WEB-INF/views/apic/park.jsp"/>
+	</definition>
 </tiles-definitions>
