@@ -24,4 +24,8 @@
 			where (m.id=#{idmail} or m.email=#{idmail})
 	</select>
 	
+	
+	<select id="searchMember" resultType="java.util.HashMap">
+		select * from member where id like #{id}
+	</select>
 </mapper>

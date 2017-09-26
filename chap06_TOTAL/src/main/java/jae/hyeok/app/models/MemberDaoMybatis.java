@@ -28,4 +28,8 @@ public class MemberDaoMybatis {
 		return template.selectOne("join.readOneByIdOrEmail", idmail);
 	}
 	
+	public HashMap searchMember(String id) {
+		return template.selectOne("join.searchMember", id);
+	}
+	
 }

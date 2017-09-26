@@ -8,35 +8,48 @@
 <hr />
 <div>
 	<h3>삼성노트북 코어 i5</h3>
-	판매가 : ${ok } <hr/>
+	판매가 : 656,000 <hr/>
 	옵션 :
 	<ul style="list-style: none;">
-		<li><input type="checkbox" class="option" value="24000"/>RAM 추가 (+24,000)</li>
-		<li><input type="checkbox" class="option" value="34000"/>HDD추가 (+34,000)</li>
-		<li><input type="checkbox" class="option" value="22000"/>외장그래픽카드추가 (+22,000)</li>
-		<li><input type="checkbox" class="option" value="42000"/>OS포함 (+42,000)</li>
+		<li><input type="checkbox" class="opt" data="24000" />RAM 추가 (+24,000)</li>
+		<li><input type="checkbox" class="opt" data="34000" />HDD추가 (+34,000)</li>
+		<li><input type="checkbox" class="opt" data="22000" />외장그래픽카드추가 (+22,000)</li>
+		<li><input type="checkbox" class="opt" data="42000" />OS포함 (+42,000)</li>
 	</ul>
 	<hr />
 	수량 :
 	<button>-</button>
-	<input type="number" style="width: 50px;" value="1" min="1" />
-	<button>+</button>
+	<input type="number" style="width: 50px;" value="1" min="1" id="cnt"/>
+	<button id="pbt">+</button>
 	<hr />
 </div>
-<div>전체 상품 총액 : <span id="cnt" >${ok }</span></div>
-
+<div>전체 상품 총액 : <span id="rst">656,000</span></div>
 <script>
-	$(".option").change(function(){
-		$(this).each(function(){
-			var ac = parseInt($(this).val());
-			if($(this).prop("checked")){
-				console.log(ac + " / " + typeof ac);
-				ac+= ${ok};
-				$("#cnt").html(ac);
-			}else{
-			
-			}
-		})
+	var tot = 656000;
+	var print = function() {
+		$("#rst").html(tot * parseInt($("#cnt").val()));;
+	}
+	$(".opt").change(function(){
+		if($(this).prop("checked") ) {
+			tot += parseInt($(this).attr("data"));
+		}else {
+			tot -= parseInt($(this).attr("data"));
+		}
+		$("#cnt").trigger("change");
 	});
-	
+	$("#cnt").change(function(){
+		print();
+	});
+	$("#pbt").click(function(){
+		$("#cnt").val( parseInt($("#cnt").val()) +1 );
+		$("#cnt").trigger("change");	// 이벤트 발생
+	});
 </script>
+
+
+
+
+
+
+
+

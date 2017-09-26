@@ -33,6 +33,30 @@ public class jQueryController {
 		return mav;
 	}
 	
+	@RequestMapping("/04")
+	public ModelAndView jquery04() {
+		ModelAndView mav = new ModelAndView("t_expr");
+		mav.addObject("title", "JQuery테스트4");
+		mav.addObject("section", "jquery/04");
+		return mav;
+	}
+	
+	@RequestMapping("/05")
+	public ModelAndView jquery05() {
+		ModelAndView mav = new ModelAndView("t_expr");
+		mav.addObject("title", "JQuery테스트5");
+		mav.addObject("section", "jquery/05");
+		return mav;
+	}
+	
+	@RequestMapping("/06")
+	public ModelAndView jquery06() {
+		ModelAndView mav = new ModelAndView("t_expr");
+		mav.addObject("title", "JQuery테스트6");
+		mav.addObject("section", "jquery/06");
+		return mav;
+	}
+	
 	@RequestMapping("/qz01")
 	public ModelAndView jquery_qz01() {
 		ModelAndView mav = new ModelAndView("t_expr");
@@ -44,10 +68,16 @@ public class jQueryController {
 	@RequestMapping("/qz02")
 	public ModelAndView jquery_qz02() {
 		ModelAndView mav = new ModelAndView("t_expr");
-		int a = 656000;
 		mav.addObject("title", "jquery_qz02");
 		mav.addObject("section", "jquery/qz02");
-		mav.addObject("ok", a);
+		return mav;
+	}
+	
+	@RequestMapping("/qz03")
+	public ModelAndView jquery_qz03() {
+		ModelAndView mav = new ModelAndView("t_expr");
+		mav.addObject("title", "jquery_qz03");
+		mav.addObject("section", "jquery/qz03");
 		return mav;
 	}
 }

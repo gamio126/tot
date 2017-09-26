@@ -5,7 +5,7 @@
 <div align="right">
 	<c:choose>
 		<c:when test="${auth.ID eq null}">
-			<a href="login">LOGIN</a> | <a href="join">JOIN</a> | <a href="chat">CHAT</a>
+			<a href="/login">LOGIN</a> | <a href="/join">JOIN</a> | <a href="/chat">CHAT</a>
 			<hr/>
 		</c:when>
 		<c:otherwise>
