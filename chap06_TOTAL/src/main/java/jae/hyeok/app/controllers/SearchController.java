@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import jae.hyeok.app.models.MemberDaoMybatis;
@@ -23,11 +24,15 @@ public class SearchController {
 	@RequestMapping("/search")
 	public ModelAndView searchIdHandle() {
 		ModelAndView mav = new ModelAndView("t_expr");
-		
-		HashMap list = dao.searchMember("");
-		mav.addObject("title", "member_search");
+		mav.addObject("title", "친구찾기");
 		mav.addObject("section", "member/search");
 		return mav;
+	}
+	
+	@RequestMapping("/searchAjax")
+	@ResponseBody
+	public List<Map> searchIdAjaxHandle(@RequestParam String id) {
+		return dao.searchById(id+"%");
 	}
 
 }

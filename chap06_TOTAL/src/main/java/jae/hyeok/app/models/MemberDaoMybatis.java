@@ -2,6 +2,7 @@ package jae.hyeok.app.models;
 
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,8 +29,12 @@ public class MemberDaoMybatis {
 		return template.selectOne("join.readOneByIdOrEmail", idmail);
 	}
 	
-	public HashMap searchMember(String id) {
-		return template.selectOne("join.searchMember", id);
+	public List<Map> searchById(String id) {
+		return template.selectList("join.searchById", id);
+	}
+	
+	public List<Map> countByGender() {
+		return template.selectList("join.countByGender");
 	}
 	
 }

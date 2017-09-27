@@ -24,8 +24,12 @@
 			where (m.id=#{idmail} or m.email=#{idmail})
 	</select>
 	
+	<select id="searchById" resultType="java.util.HashMap">
+		select m.*, d.* from member m join detail d on m.id = d.id
+			where m.id like #{id}
+	</select>
 	
-	<select id="searchMember" resultType="java.util.HashMap">
-		select * from member where id like #{id}
+	<select id="countByGender" resultType="java.util.HashMap">
+		select nvl(gender, '미설정') as gender, count(*) as cnt from detail group by gender	
 	</select>
 </mapper>

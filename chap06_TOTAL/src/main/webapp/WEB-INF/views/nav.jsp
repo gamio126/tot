@@ -26,6 +26,7 @@
 			<a href="/market/list">MARKET</a> | 
 			<a href="/my/info">INFORMATION</a> |
 			<a href="/my/allMember2">MEMBER</a><br/>
+			<a href="/member/search">SEARCH</a> |
 			<a href="/memo/home">MESSAGE</a> |
 			<a href="/apic/park">PARKING</a> |
 			<a href="http://dic.naver.com/">DICTIONARY</a> |
